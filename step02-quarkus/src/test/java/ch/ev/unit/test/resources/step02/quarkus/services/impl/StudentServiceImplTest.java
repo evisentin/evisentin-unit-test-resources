@@ -5,12 +5,12 @@ import ch.ev.unit.test.resources.step02.quarkus.exceptions.StudentNotFoundExcept
 import ch.ev.unit.test.resources.step02.quarkus.exceptions.UserNotFoundException;
 import ch.ev.unit.test.resources.step02.quarkus.repositories.StudentRepository;
 import ch.ev.unit.test.resources.step02.quarkus.services.UserService;
+import lombok.NonNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
@@ -44,13 +44,6 @@ class StudentServiceImplTest {
     // -------------------------------------------------------------------------------------------------------------
 
     @Test
-    void getById__fails__on_null_userName() {
-        assertThatThrownBy(() -> studentService.getById(null, null))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("'userName' cannot be null!");
-    }
-
-    @Test
     void getById__fails__on_null_id() {
         assertThatThrownBy(() -> studentService.getById("user01", null))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -58,50 +51,55 @@ class StudentServiceImplTest {
     }
 
     @Test
-    void getById__fails__on_user_not_found() {
-
-        // GIVEN
-        // - user01 does not exist
-        Mockito.when(userService.userExists("user01")).thenReturn(false);
-
-        assertThatThrownBy(() -> studentService.getById("user01", 1L))
-                .isInstanceOf(UserNotFoundException.class)
-                .hasMessage("User 'user01' not found.");
+    void getById__fails__on_null_userName() {
+        assertThatThrownBy(() -> studentService.getById(null, null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("'userName' cannot be null!");
     }
 
     @Test
     void getById__fails__on_student_not_found() {
 
         // GIVEN
-        // - user01 exists
-        Mockito.when(userService.userExists("user01")).thenReturn(true);
+        givenUserExists("user01");
+        giveStudentNotFound(1L);
 
-        // - student (id=1) not found
-        Mockito.when(studentRepository.getById(1L)).thenReturn(Optional.empty());
-
+        // THEN
         assertThatThrownBy(() -> studentService.getById("user01", 1L))
                 .isInstanceOf(StudentNotFoundException.class)
-                .hasMessage("Student  id:1 not found.");
+                .hasMessage("Student id:1 not found.");
+    }
+
+    @Test
+    void getById__fails__on_user_not_found() {
+
+        // GIVEN
+        givenUserDoesNotExists("user01");
+
+        // THEN
+        assertThatThrownBy(() -> studentService.getById("user01", 1L))
+                .isInstanceOf(UserNotFoundException.class)
+                .hasMessage("User 'user01' not found.");
     }
 
     @Test
     void getById__succeeds() {
 
-        Student myStudent = Student.builder()
-                .id(1L)
+        final long studentID = 1L;
+        final Student myStudent = Student.builder()
+                .id(studentID)
                 .firstName("Tom")
                 .lastName("Sawyer")
                 .build();
 
         // GIVEN
-        // - user01 exists
-        Mockito.when(userService.userExists("user01")).thenReturn(true);
+        givenUserExists("user01");
+        givenStudentIsFound(myStudent);
 
-        // - student (id=1) is found
-        Mockito.when(studentRepository.getById(1L)).thenReturn(Optional.of(myStudent));
+        // WHEN
+        final Student student = studentService.getById("user01", studentID);
 
-        final Student student = studentService.getById("user01", 1L);
-
+        // THEN
         assertThat(student) // we expect the 'found' student
                 .isNotNull() // not to be null
                 .isEqualTo(myStudent); // to be equal to myStudent
@@ -110,21 +108,21 @@ class StudentServiceImplTest {
     @Test
     void getById__succeeds__with_verification() {
 
-        Student myStudent = Student.builder()
-                .id(1L)
+        final long studentID = 1L;
+        final Student myStudent = Student.builder()
+                .id(studentID)
                 .firstName("Tom")
                 .lastName("Sawyer")
                 .build();
 
         // GIVEN
-        // - user01 exists
-        when(userService.userExists("user01")).thenReturn(true);
+        givenUserExists("user01");
+        givenStudentIsFound(myStudent);
 
-        // - student (id=1) is found
-        when(studentRepository.getById(1L)).thenReturn(Optional.of(myStudent));
+        // WHEN
+        final Student student = studentService.getById("user01", studentID);
 
-        final Student student = studentService.getById("user01", 1L);
-
+        // THEN
         assertThat(student) // we expect the 'found' student
                 .isNotNull() // not to be null
                 .isEqualTo(myStudent); // to be equal to myStudent
@@ -141,8 +139,24 @@ class StudentServiceImplTest {
 
         // check for the expected interactions to happen in the expected order
         mocksInOrder.verify(userService, times(1)).userExists("user01");
-        mocksInOrder.verify(studentRepository, times(1)).getById(1L);
+        mocksInOrder.verify(studentRepository, times(1)).getById(studentID);
         mocksInOrder.verifyNoMoreInteractions();
+    }
+
+    private void giveStudentNotFound(long id) {
+        when(studentRepository.getById(id)).thenReturn(Optional.empty());
+    }
+
+    private void givenStudentIsFound(@NonNull final Student myStudent) {
+        when(studentRepository.getById(myStudent.getId())).thenReturn(Optional.of(myStudent));
+    }
+
+    private void givenUserDoesNotExists(@NonNull final String userName) {
+        when(userService.userExists(userName)).thenReturn(false);
+    }
+
+    private void givenUserExists(@NonNull final String userName) {
+        when(userService.userExists(userName)).thenReturn(true);
     }
 
 }
