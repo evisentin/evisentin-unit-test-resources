@@ -7,15 +7,18 @@ import ch.ev.unit.test.resources.step02.osgi.repositories.StudentRepository;
 import ch.ev.unit.test.resources.step02.osgi.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @ExtendWith(MockitoExtension.class)
 class StudentServiceImplTest {
@@ -58,7 +61,7 @@ class StudentServiceImplTest {
 
         // GIVEN
         // - user01 does not exist
-        Mockito.when(userService.userExists("user01")).thenReturn(false);
+        when(userService.userExists("user01")).thenReturn(false);
 
         assertThatThrownBy(() -> studentService.getById("user01", 1L))
                 .isInstanceOf(UserNotFoundException.class)
@@ -70,10 +73,10 @@ class StudentServiceImplTest {
 
         // GIVEN
         // - user01 exists
-        Mockito.when(userService.userExists("user01")).thenReturn(true);
+        when(userService.userExists("user01")).thenReturn(true);
 
         // - student (id=1) not found
-        Mockito.when(studentRepository.getById(1L)).thenReturn(Optional.empty());
+        when(studentRepository.getById(1L)).thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> studentService.getById("user01", 1L))
                 .isInstanceOf(StudentNotFoundException.class)
@@ -91,16 +94,54 @@ class StudentServiceImplTest {
 
         // GIVEN
         // - user01 exists
-        Mockito.when(userService.userExists("user01")).thenReturn(true);
+        when(userService.userExists("user01")).thenReturn(true);
 
         // - student (id=1) is found
-        Mockito.when(studentRepository.getById(1L)).thenReturn(Optional.of(myStudent));
+        when(studentRepository.getById(1L)).thenReturn(Optional.of(myStudent));
 
         final Student student = studentService.getById("user01", 1L);
 
         assertThat(student) // we expect the 'found' student
                 .isNotNull() // not to be null
                 .isEqualTo(myStudent); // to be equal to myStudent
+    }
+
+    @Test
+    void getById__succeeds__with_verification() {
+
+        Student myStudent = Student.builder()
+                .id(1L)
+                .firstName("Tom")
+                .lastName("Sawyer")
+                .build();
+
+        // GIVEN
+        // - user01 exists
+        when(userService.userExists("user01")).thenReturn(true);
+
+        // - student (id=1) is found
+        when(studentRepository.getById(1L)).thenReturn(Optional.of(myStudent));
+
+        final Student student = studentService.getById("user01", 1L);
+
+        assertThat(student) // we expect the 'found' student
+                .isNotNull() // not to be null
+                .isEqualTo(myStudent); // to be equal to myStudent
+
+        // --------------------------------------------------------------------------------------------
+        // Here we use the Mockito's 'InOrder' class, which takes care of the order of method calls
+        // that the mock is going to make in due course of its action.
+        //
+        // --> https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html (6. Verification in order )
+        // --> https://www.baeldung.com/mockito-verify
+        // --------------------------------------------------------------------------------------------
+
+        InOrder mocksInOrder = inOrder(userService, studentRepository);
+
+        // check for the expected interactions to happen in the expected order
+        mocksInOrder.verify(userService, times(1)).userExists("user01");
+        mocksInOrder.verify(studentRepository, times(1)).getById(1L);
+        mocksInOrder.verifyNoMoreInteractions();
     }
 
 }
