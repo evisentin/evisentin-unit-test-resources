@@ -1,10 +1,10 @@
-package ch.ev.unit.test.resources.step02.osgi.services.impl;
+package ch.ev.unit.test.resources.step02.spring.services.impl;
 
-import ch.ev.unit.test.resources.step02.osgi.data.Student;
-import ch.ev.unit.test.resources.step02.osgi.exceptions.StudentNotFoundException;
-import ch.ev.unit.test.resources.step02.osgi.exceptions.UserNotFoundException;
-import ch.ev.unit.test.resources.step02.osgi.repositories.StudentRepository;
-import ch.ev.unit.test.resources.step02.osgi.services.UserService;
+import ch.ev.unit.test.resources.step02.spring.data.Student;
+import ch.ev.unit.test.resources.step02.spring.exceptions.StudentNotFoundException;
+import ch.ev.unit.test.resources.step02.spring.exceptions.UserNotFoundException;
+import ch.ev.unit.test.resources.step02.spring.repositories.StudentRepository;
+import ch.ev.unit.test.resources.step02.spring.services.UserService;
 import lombok.NonNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
