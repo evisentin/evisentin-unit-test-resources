@@ -1,4 +1,4 @@
-package ch.ev.unit.test.resources.step02.osgi.exceptions;
+package ch.ev.unit.test.resources.step02.spring.exceptions;
 
 public class StudentNotFoundException extends RuntimeException {
     public StudentNotFoundException(Long id) {

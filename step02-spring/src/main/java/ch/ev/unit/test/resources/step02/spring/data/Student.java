@@ -1,4 +1,4 @@
-package ch.ev.unit.test.resources.step02.osgi.data;
+package ch.ev.unit.test.resources.step02.spring.data;
 
 import lombok.Builder;
 import lombok.Data;

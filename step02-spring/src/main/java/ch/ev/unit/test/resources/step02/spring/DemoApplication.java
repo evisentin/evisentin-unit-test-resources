@@ -1,4 +1,4 @@
-package ch.ev.unit.test.resources.step02.osgi;
+package ch.ev.unit.test.resources.step02.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
