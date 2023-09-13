@@ -48,11 +48,22 @@ You will see modules `step02-<xxx>`, please refer to each module's `README.md` f
 
 ---
 
+# Step 03
+
+Testing a service class, with collaborators, and interaction with an external REST service.
+
+This kind of test is very important, it shows how we can use WireMock to test our REST-client based classes.
+
+You will see modules `step03-<xxx>`, please refer to each module's `README.md` for information.
+
+---
+
 # Local setup
 
 You need Java 17 and Apache Maven to build this project.
 
-Feel free to install them as you like best, a suggestion is to use [Homebrew](https://brew.sh/) and [SDKMAN](https://sdkman.io/)
+Feel free to install them as you like best, a suggestion is to use [Homebrew](https://brew.sh/)
+and [SDKMAN](https://sdkman.io/)
 
 ## Install Homebrew
 
