@@ -23,6 +23,7 @@ The libraries used fall into two categories:
     - [JUnit 5](https://junit.org/junit5/)
     - [Assertj](https://assertj.github.io/doc/)
     - [Mockito](https://site.mockito.org/)
+    - [WireMock](https://wiremock.org/)
 - application frameworks, to illustrate testing using these frameworks
     - [OSGI](https://docs.osgi.org/specification/)
     - [Quarkus](https://quarkus.io/)
@@ -47,3 +48,41 @@ You will see modules `step02-<xxx>`, please refer to each module's `README.md` f
 
 ---
 
+# Local setup
+
+You need Java 17 and Apache Maven to build this project.
+
+Feel free to install them as you like best, a suggestion is to use [Homebrew](https://brew.sh/) and [SDKMAN](https://sdkman.io/)
+
+## Install Homebrew
+
+Open a terminal and run
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+## Install SDKMAN
+
+Open a terminal and run
+
+```shell
+curl -s "https://get.sdkman.io" | bash
+```
+
+## Install and use Java 17
+
+Open a terminal and run
+
+```shell
+sdk install java 17.0.7-tem
+sdk default java 17.0.7-tem
+```
+
+## Install Apache Maven
+
+Open a terminal and run
+
+```shell
+brew install maven
+```
