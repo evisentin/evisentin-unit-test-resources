@@ -6,9 +6,8 @@ import ch.ev.unit.test.resources.step02.quarkus.exceptions.UserNotFoundException
 import ch.ev.unit.test.resources.step02.quarkus.repositories.StudentRepository;
 import ch.ev.unit.test.resources.step02.quarkus.services.StudentService;
 import ch.ev.unit.test.resources.step02.quarkus.services.UserService;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class StudentServiceImpl implements StudentService {
