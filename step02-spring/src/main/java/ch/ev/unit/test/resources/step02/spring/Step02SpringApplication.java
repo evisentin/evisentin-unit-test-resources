@@ -1,13 +1,13 @@
-package ch.ev.unit.test.resources.step03.spring;
+package ch.ev.unit.test.resources.step02.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class Step02SpringApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(Step02SpringApplication.class, args);
     }
 
 }
