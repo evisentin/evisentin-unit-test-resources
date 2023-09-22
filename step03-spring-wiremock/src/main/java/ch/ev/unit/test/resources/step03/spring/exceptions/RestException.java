@@ -1,9 +1,14 @@
 package ch.ev.unit.test.resources.step03.spring.exceptions;
 
-import org.springframework.http.HttpStatusCode;
+import java.io.IOException;
 
 public class RestException extends RuntimeException {
-    public RestException(final HttpStatusCode statusCode) {
-        super(String.format("Unexpected HTTP %d code", statusCode.value()));
+
+    public RestException(final int statusCode) {
+        super(String.format("Unexpected HTTP %d code", statusCode));
+    }
+
+    public RestException(final IOException e) {
+        super("Unexpected exception %s", e);
     }
 }

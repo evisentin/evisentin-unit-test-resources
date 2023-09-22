@@ -1,18 +1,20 @@
 package ch.ev.unit.test.resources.step03.spring.configuration;
 
-import ch.ev.unit.test.resources.step03.spring.rest.RestTemplateResponseErrorHandler;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RestClientConfiguration {
 
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder,
-                                     RestTemplateResponseErrorHandler responseErrorHandler) {
+    public OkHttpClient httpClient() {
+        return new OkHttpClient.Builder().build();
+    }
 
-        return restTemplateBuilder.errorHandler(responseErrorHandler).build();
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

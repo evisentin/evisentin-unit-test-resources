@@ -2,16 +2,15 @@ package ch.ev.unit.test.resources.step03.spring.repositories.rest;
 
 import ch.ev.unit.test.resources.step03.spring.data.Student;
 import ch.ev.unit.test.resources.step03.spring.exceptions.RestException;
-import ch.ev.unit.test.resources.step03.spring.rest.RestTemplateResponseErrorHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import lombok.SneakyThrows;
+import okhttp3.OkHttpClient;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
@@ -32,7 +31,7 @@ class StudentRestRepositoryTest implements WithAssertions {
 
     @BeforeEach
     void before(final WireMockRuntimeInfo wmRuntimeInfo) {
-        this.testObject = new StudentRestRepository(wmRuntimeInfo.getHttpBaseUrl(), buildRestTemplateForTesting());
+        this.testObject = new StudentRestRepository(wmRuntimeInfo.getHttpBaseUrl(), new OkHttpClient.Builder().build(), objectMapper);
     }
 
     @Test
@@ -93,9 +92,5 @@ class StudentRestRepositoryTest implements WithAssertions {
         assertThat(student).isPresent().get().isEqualTo(expectedStudent);
     }
 
-    private static RestTemplate buildRestTemplateForTesting() {
-        final RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
-        return restTemplate;
-    }
+
 }
