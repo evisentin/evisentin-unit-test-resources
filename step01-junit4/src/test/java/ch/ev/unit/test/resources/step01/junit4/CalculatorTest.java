@@ -10,18 +10,6 @@ public class CalculatorTest {
     Calculator testObject;
 
     // in JUNIT 4 test methods MUST be public
-    @Before
-    public void beforeTest() {
-        testObject = new Calculator();
-    }
-
-    // -------------------------------------------------------------------------------------------------------------
-    // the naming convention used here is <method_name>__[fails|succeeds]__<condition>
-    // this is just a suggestion, there are many other named conventions that are just as valid and effective.
-    // The important thing is to choose one and keep the choice consistent.
-    // -------------------------------------------------------------------------------------------------------------
-
-    // in JUNIT 4 test methods MUST be public
     @Test
     public void add__fails__on_first_operand_null() {
 
@@ -31,6 +19,12 @@ public class CalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class) // we expect it to be an IllegalArgumentException
                 .hasMessage("'a' cannot be null!"); // and we expect it to have a specific message
     }
+
+    // -------------------------------------------------------------------------------------------------------------
+    // the naming convention used here is <method_name>__[fails|succeeds]__<condition>
+    // this is just a suggestion, there are many other named conventions that are just as valid and effective.
+    // The important thing is to choose one and keep the choice consistent.
+    // -------------------------------------------------------------------------------------------------------------
 
     // in JUNIT 4 test methods MUST be public
     @Test
@@ -53,6 +47,12 @@ public class CalculatorTest {
                 .isNotNull() // we expect it not to be NULL
                 .isEqualTo(30); // AND we expect it to be a specific value
 
+    }
+
+    // in JUNIT 4 test methods MUST be public
+    @Before
+    public void beforeTest() {
+        testObject = new Calculator();
     }
 
 }
