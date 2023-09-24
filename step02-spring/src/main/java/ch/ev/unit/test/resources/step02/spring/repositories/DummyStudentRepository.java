@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class DummyStudentRepository  implements StudentRepository{
+public class DummyStudentRepository implements StudentRepository {
     @Override
     public Optional<Student> getById(Long id) {
         return Optional.empty();
