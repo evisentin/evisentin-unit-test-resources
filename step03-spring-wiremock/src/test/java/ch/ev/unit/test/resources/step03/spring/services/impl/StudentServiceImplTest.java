@@ -13,8 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.inOrder;
@@ -144,11 +142,11 @@ class StudentServiceImplTest {
     }
 
     private void giveStudentNotFound(long id) {
-        when(studentRepository.getById(id)).thenReturn(Optional.empty());
+        when(studentRepository.getById(id)).thenThrow(new StudentNotFoundException(id));
     }
 
     private void givenStudentIsFound(@NonNull final Student myStudent) {
-        when(studentRepository.getById(myStudent.getId())).thenReturn(Optional.of(myStudent));
+        when(studentRepository.getById(myStudent.getId())).thenReturn(myStudent);
     }
 
     private void givenUserDoesNotExists(@NonNull final String userName) {
