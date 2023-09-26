@@ -2,19 +2,16 @@ package ch.ev.unit.test.resources.step03.spring.repositories.rest;
 
 import ch.ev.unit.test.resources.step03.spring.data.Student;
 import ch.ev.unit.test.resources.step03.spring.exceptions.RestException;
+import ch.ev.unit.test.resources.step03.spring.exceptions.StudentNotFoundException;
 import ch.ev.unit.test.resources.step03.spring.repositories.StudentRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
-
-import java.io.IOException;
-import java.util.Optional;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import static org.apache.commons.lang3.StringUtils.removeEnd;
 
@@ -23,42 +20,36 @@ import static org.apache.commons.lang3.StringUtils.removeEnd;
 public class StudentRestRepository implements StudentRepository {
 
     private final String serviceUrl;
-    private final OkHttpClient httpClient;
-    private final ObjectMapper objectMapper;
+
+    private final RestTemplate restTemplate;
 
     public StudentRestRepository(
             @Value("${app.services.external.student.base-url}") final @NonNull String serviceUrl,
-            final OkHttpClient httpClient, final ObjectMapper objectMapper) {
+            final RestTemplateBuilder restTemplateBuilder) {
 
+        this.restTemplate = restTemplateBuilder.build();
         this.serviceUrl = removeEnd(serviceUrl, "/");
-        this.httpClient = httpClient;
-        this.objectMapper = objectMapper;
     }
 
     @Override
-    public Optional<Student> getById(final @NonNull Long id) {
+    public Student getById(final @NonNull Long id) {
 
-        final String url = serviceUrl + "/api/student/" + id;
-        final Request request = new Request.Builder().url(url).build();
+        try {
+            final ResponseEntity<Student> response = restTemplate.getForEntity(serviceUrl + "/api/student/{id}", Student.class, id);
 
-        try (final Response response = httpClient.newCall(request).execute()) {
+            final Student student = response.getBody();
 
-            if (response.isSuccessful()) {
-                return asStudent(response);
-            }
+            if (student == null) throw new RestException("empty body received");
 
-            if (response.code() == 404) return Optional.empty();
+            return student;
 
-            throw new RestException(response.code());
 
-        } catch (IOException e) {
-            throw new RestException(e);
+        } catch (HttpClientErrorException ex) {
+
+            // on 404
+            if (ex.getStatusCode().value() == 404) throw new StudentNotFoundException(id);
+
+            throw new RestException(ex.getStatusCode().value());
         }
-    }
-
-    private Optional<Student> asStudent(final @NonNull Response response) throws IOException {
-        final ResponseBody body = response.body();
-        if (body == null) return Optional.empty();
-        return Optional.ofNullable(objectMapper.readValue(body.bytes(), Student.class));
     }
 }

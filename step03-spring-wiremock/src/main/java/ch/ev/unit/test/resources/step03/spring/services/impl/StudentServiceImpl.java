@@ -1,7 +1,6 @@
 package ch.ev.unit.test.resources.step03.spring.services.impl;
 
 import ch.ev.unit.test.resources.step03.spring.data.Student;
-import ch.ev.unit.test.resources.step03.spring.exceptions.StudentNotFoundException;
 import ch.ev.unit.test.resources.step03.spring.exceptions.UserNotFoundException;
 import ch.ev.unit.test.resources.step03.spring.repositories.StudentRepository;
 import ch.ev.unit.test.resources.step03.spring.services.StudentService;
@@ -26,6 +25,6 @@ public class StudentServiceImpl implements StudentService {
 
         if (!userService.userExists(userName)) throw new UserNotFoundException(userName);
 
-        return studentRepository.getById(id).orElseThrow(() -> new StudentNotFoundException(id));
+        return studentRepository.getById(id);
     }
 }
