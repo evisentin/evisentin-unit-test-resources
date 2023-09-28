@@ -32,6 +32,3 @@ named `getById`, which takes as parameter the identifier of the student to be fo
 **PLEASE NOTE:** Quarkus requires real implementation of the components to be present at compile time, so I had to
 create `ch.ev.unit.test.resources.step02.quarkus.services.impl.UserServiceDummyImpl`, please ignore it.
 
-**PLEASE NOTE:** although the code to be tested changes depending on the framework used (**OSGI**, **Spring**, **Quarkus
-**, etc.),
-**<ins>the source code of the tests remains unchanged</ins>**.
