@@ -28,7 +28,7 @@ Class `ch.ev.unit.test.resources.step03.spring.repositories.rest.StudentRestRepo
 named `getById`, which takes as parameter the identifier of the student to be found.
 
 - the method fails if any of the parameter is null.
-- the method `Optional.empty()` if the student corresponding to identifier is not found.
+- the method fails `ch.ev.unit.test.resources.step03.spring.exceptions.StudentNotFoundException` if the student corresponding to identifier is not found.
 - the method returns a `ch.ev.unit.test.resources.step03.spring.data.Student` instance of the found student.
 
 ---

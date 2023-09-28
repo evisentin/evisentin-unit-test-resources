@@ -15,23 +15,18 @@
         <module>step02-osgi</module>
         <module>step02-quarkus</module>
         <module>step02-spring</module>
+        <module>step03-quarkus-wiremock</module>
         <module>step03-spring-wiremock</module>
     </modules>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <properties>
         <assertj-core.version>3.24.2</assertj-core.version>
-
         <junit-4.version>4.13.2</junit-4.version>
         <junit-5version>5.10.0</junit-5version>
-
         <lombok.version>1.18.30</lombok.version>
-
         <mockito.version>5.5.0</mockito.version>
-
         <quarkus.version>3.4.1</quarkus.version>
-
         <spring-boot.version>3.1.4</spring-boot.version>
-
         <wiremock.version>3.2.0</wiremock.version>
     </properties>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
