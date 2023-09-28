@@ -15,6 +15,7 @@
         <module>step02-osgi</module>
         <module>step02-quarkus</module>
         <module>step02-spring</module>
+        <module>step03-quarkus-wiremock</module>
         <module>step03-spring-wiremock</module>
     </modules>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

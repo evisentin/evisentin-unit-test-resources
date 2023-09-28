@@ -34,7 +34,7 @@ class StudentRestRepositoryTest implements WithAssertions {
     }
 
     @Test
-    void empty_on_not_found() {
+    void exception_on_not_found() {
 
         // GIVEN
         stubFor(get(urlEqualTo("/api/student/10"))
