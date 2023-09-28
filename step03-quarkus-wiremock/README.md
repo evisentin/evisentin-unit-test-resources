@@ -25,13 +25,12 @@ Class `ch.ev.unit.test.resources.step03.quarkus.repositories.rest.StudentRestRep
 named `getById`, which takes as parameter the identifier of the student to be found.
 
 - the method fails if any of the parameter is null.
-- the method fails `ch.ev.unit.test.resources.step03.quarkus.exceptions.StudentNotFoundException` if the student corresponding to identifier is not found.
+- the method fails `ch.ev.unit.test.resources.step03.quarkus.exceptions.StudentNotFoundException` if the student
+  corresponding to identifier is not found.
 - the method returns a `ch.ev.unit.test.resources.step03.quarkus.data.Student` instance of the found student.
 
 ---
 **PLEASE NOTE:** Quarkus requires real implementation of the components to be present at compile time, so I had to
 create `ch.ev.unit.test.resources.step02.quarkus.services.impl.UserServiceDummyImpl`, please ignore it.
 
-**PLEASE NOTE:** although the code to be tested changes depending on the framework used (**OSGI**, **Spring**, **Quarkus
-**, etc.),
-**<ins>the source code of the tests remains unchanged</ins>**.
+
