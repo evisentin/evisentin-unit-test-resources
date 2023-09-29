@@ -18,14 +18,21 @@ public class StudentServiceImpl implements StudentService {
     @Inject
     StudentRepository studentRepository;
 
-    public Student getById(String userName, Long id) {
+    @Override
+    public Student getById(final String userName, final Long id) {
 
-        if (userName == null) throw new IllegalArgumentException("'userName' cannot be null!");
-
-        if (id == null) throw new IllegalArgumentException("'id' cannot be null!");
-
-        if (!userService.userExists(userName)) throw new UserNotFoundException(userName);
+        failOnNull(userName, "'userName' cannot be null!");
+        failOnNull(id, "'id' cannot be null!");
+        failOnNonExistingUser(userName);
 
         return studentRepository.getById(id).orElseThrow(() -> new StudentNotFoundException(id));
+    }
+
+    private void failOnNonExistingUser(final String userName) {
+        if (!userService.userExists(userName)) throw new UserNotFoundException(userName);
+    }
+
+    private void failOnNull(final Object object, final String message) {
+        if (object == null) throw new IllegalArgumentException(message);
     }
 }

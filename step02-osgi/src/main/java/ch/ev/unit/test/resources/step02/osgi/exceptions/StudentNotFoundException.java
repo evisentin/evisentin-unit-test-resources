@@ -1,7 +1,7 @@
 package ch.ev.unit.test.resources.step02.osgi.exceptions;
 
 public class StudentNotFoundException extends RuntimeException {
-    public StudentNotFoundException(Long id) {
+    public StudentNotFoundException(final Long id) {
         super(String.format("Student id:%d not found.", id));
     }
 }

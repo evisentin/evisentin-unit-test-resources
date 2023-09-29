@@ -8,6 +8,7 @@ import ch.ev.unit.test.resources.step02.spring.services.StudentService;
 import ch.ev.unit.test.resources.step02.spring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 @Component
 public class StudentServiceImpl implements StudentService {
@@ -18,14 +19,18 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public Student getById(String userName, Long id) {
+    @Override
+    public Student getById(final String userName, final Long id) {
 
-        if (userName == null) throw new IllegalArgumentException("'userName' cannot be null!");
-
-        if (id == null) throw new IllegalArgumentException("'id' cannot be null!");
-
-        if (!userService.userExists(userName)) throw new UserNotFoundException(userName);
+        Assert.notNull(userName, "'userName' cannot be null!");
+        Assert.notNull(id, "'id' cannot be null!");
+        failOnNonExistingUser(userName);
 
         return studentRepository.getById(id).orElseThrow(() -> new StudentNotFoundException(id));
     }
+
+    private void failOnNonExistingUser(final String userName) {
+        if (!userService.userExists(userName)) throw new UserNotFoundException(userName);
+    }
+
 }

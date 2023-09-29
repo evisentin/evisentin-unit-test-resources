@@ -22,7 +22,7 @@ public class StudentRestRepository implements StudentRepository {
             return studentRestClient.getById(id);
 
         } catch (final RestException ex) {
-            if (ex.getStatusCode() == 404)
+            if (ex.getStatusCode() == 404) /* HTTP 404 = NOT_FOUND */
                 throw new StudentNotFoundException(id);
             throw ex;
         }

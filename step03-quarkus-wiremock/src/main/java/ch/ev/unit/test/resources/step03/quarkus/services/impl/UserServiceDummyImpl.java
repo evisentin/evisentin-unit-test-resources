@@ -6,7 +6,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class UserServiceDummyImpl implements UserService {
     @Override
-    public boolean userExists(String userName) {
+    public boolean userExists(final String userName) {
         return false;
     }
 }
