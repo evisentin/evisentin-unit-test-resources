@@ -22,11 +22,8 @@ public interface StudentRestClient {
     @ClientExceptionMapper
     static RuntimeException toException(final Response response) {
 
-        if (response.getStatus() == 200) return null;
+        final Response.StatusType statusInfo = response.getStatusInfo();
 
-        if (response.getStatus() == 404) return new RestException(404, "NOT FOUND");
-
-        return new RestException(response.getStatus());
+        return new RestException(statusInfo.getStatusCode(), statusInfo.getReasonPhrase());
     }
-
 }
