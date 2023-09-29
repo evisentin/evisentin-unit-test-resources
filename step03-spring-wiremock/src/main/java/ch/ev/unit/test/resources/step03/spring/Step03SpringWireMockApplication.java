@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Step03SpringApplication {
+public class Step03SpringWireMockApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Step03SpringApplication.class, args);
+        SpringApplication.run(Step03SpringWireMockApplication.class, args);
     }
 
 }

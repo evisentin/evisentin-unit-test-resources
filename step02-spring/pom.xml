@@ -76,6 +76,7 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <!-- JACOCO PLUGIN - to generate the test code coverage report -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

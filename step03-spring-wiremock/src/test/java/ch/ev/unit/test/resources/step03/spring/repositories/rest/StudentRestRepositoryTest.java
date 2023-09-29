@@ -39,7 +39,7 @@ class StudentRestRepositoryTest implements WithAssertions {
         // GIVEN
         stubFor(get(urlEqualTo("/api/student/10"))
                 .willReturn(aResponse()
-                        .withStatus(404)
+                        .withStatus(404) /* HTTP 404 = NOT_FOUND */
                 ));
 
         // WHEN
@@ -81,7 +81,7 @@ class StudentRestRepositoryTest implements WithAssertions {
         // GIVEN
         stubFor(get(urlEqualTo("/api/student/1"))
                 .willReturn(aResponse()
-                        .withStatus(200)
+                        .withStatus(200) /* HTTP 200 = OK */
                         .withHeader("Content-Type", "application/json")
                         .withBody("")));
 
@@ -98,7 +98,7 @@ class StudentRestRepositoryTest implements WithAssertions {
         // GIVEN
         stubFor(get(urlEqualTo("/api/student/1"))
                 .willReturn(aResponse()
-                        .withStatus(200)
+                        .withStatus(200) /* HTTP 200 = OK */
                         .withHeader("Content-Type", "application/json")
                         .withBody(objectMapper.writeValueAsString(expectedStudent))));
 

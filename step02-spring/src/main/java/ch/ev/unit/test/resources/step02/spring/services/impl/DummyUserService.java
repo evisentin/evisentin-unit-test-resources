@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DummyUserService implements UserService {
     @Override
-    public boolean userExists(String userName) {
+    public boolean userExists(final String userName) {
         return false;
     }
 }

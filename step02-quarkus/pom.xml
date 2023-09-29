@@ -23,7 +23,6 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>${quarkus.version}</quarkus.platform.version>
         <skipITs>true</skipITs>
-        <surefire-plugin.version>3.1.2</surefire-plugin.version>
     </properties>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <dependencyManagement>
@@ -115,7 +114,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
@@ -125,7 +124,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -143,6 +142,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- JACOCO PLUGIN - to generate the test code coverage report -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

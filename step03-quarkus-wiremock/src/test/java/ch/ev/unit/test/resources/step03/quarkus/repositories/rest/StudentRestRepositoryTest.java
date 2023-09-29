@@ -22,6 +22,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 @QuarkusTestResource(WireMockTestExtensions.class)
 class StudentRestRepositoryTest implements WithAssertions {
 
+    public static final long ID_01 = 1L;
     @InjectWireMock
     WireMockServer wireMockServer;
 
@@ -42,13 +43,13 @@ class StudentRestRepositoryTest implements WithAssertions {
         // GIVEN
         wireMockServer.stubFor(get(urlEqualTo("/api/student/1"))
                 .willReturn(aResponse()
-                        .withStatus(401)
+                        .withStatus(401) /* HTTP 401 = UNAUTHORIZED */
                         .withStatusMessage("UNAUTHORIZED")));
 
         // THEN
-        assertThatThrownBy(() -> repository.getById(1L))
+        assertThatThrownBy(() -> repository.getById(ID_01))
                 .isInstanceOf(RestException.class)
-                .hasMessage("Unexpected HTTP %s code", 401);
+                .hasMessage("Unauthorized");
     }
 
     @Test
@@ -57,11 +58,11 @@ class StudentRestRepositoryTest implements WithAssertions {
         // GIVEN
         wireMockServer.stubFor(get(urlEqualTo("/api/student/1"))
                 .willReturn(aResponse()
-                        .withStatus(404)
+                        .withStatus(404) /* HTTP 404 = NOT_FOUND */
                         .withStatusMessage("NOT FOUND")));
 
         // THEN
-        assertThatThrownBy(() -> repository.getById(1L))
+        assertThatThrownBy(() -> repository.getById(ID_01))
                 .isInstanceOf(StudentNotFoundException.class)
                 .hasMessage("Student id:1 not found.");
 
@@ -82,7 +83,7 @@ class StudentRestRepositoryTest implements WithAssertions {
 
         // GIVEN
         Student expectedStudent = Student.builder()
-                .id(1L)
+                .id(ID_01)
                 .firstName("Mark")
                 .lastName("Twain")
                 .build();
@@ -99,7 +100,7 @@ class StudentRestRepositoryTest implements WithAssertions {
                         )));
 
         // WHEN
-        final Student student = repository.getById(1L);
+        final Student student = repository.getById(ID_01);
 
         // THEN
         assertThat(student).isEqualTo(expectedStudent);

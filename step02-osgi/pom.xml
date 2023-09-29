@@ -25,12 +25,12 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.core</artifactId>
-            <version>7.0.0</version>
+            <version>${osgi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.cmpn</artifactId>
-            <version>7.0.0</version>
+            <version>${osgi.version}</version>
         </dependency>
 
         <!-- [LOMBOK] -->
@@ -75,6 +75,7 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <build>
         <plugins>
+            <!-- JACOCO PLUGIN - to generate the test code coverage report -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

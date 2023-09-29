@@ -47,7 +47,8 @@ public class StudentRestRepository implements StudentRepository {
         } catch (HttpClientErrorException ex) {
 
             // on 404
-            if (ex.getStatusCode().value() == 404) throw new StudentNotFoundException(id);
+            if (ex.getStatusCode().value() == 404) /* HTTP 404 = NOT_FOUND */
+                throw new StudentNotFoundException(id);
 
             throw new RestException(ex.getStatusCode().value());
         }

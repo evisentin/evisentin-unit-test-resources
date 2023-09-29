@@ -24,6 +24,9 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 @ExtendWith(MockitoExtension.class)
 class StudentServiceImplTest {
 
+    public static final String USER_01 = "user01";
+    public static final long ID_01 = 1L;
+
     // This annotation makes Mockito automatically create a 'mock' object for this type.
     @Mock
     private UserService userService;
@@ -45,7 +48,7 @@ class StudentServiceImplTest {
 
     @Test
     void getById__fails__on_null_id() {
-        assertThatThrownBy(() -> studentService.getById("user01", null))
+        assertThatThrownBy(() -> studentService.getById(USER_01, null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("'id' cannot be null!");
     }
@@ -61,31 +64,31 @@ class StudentServiceImplTest {
     void getById__fails__on_student_not_found() {
 
         // GIVEN
-        givenUserExists("user01");
-        giveStudentNotFound(1L);
+        givenUserExists(USER_01);
+        giveStudentNotFound(ID_01);
 
         // THEN
-        assertThatThrownBy(() -> studentService.getById("user01", 1L))
+        assertThatThrownBy(() -> studentService.getById(USER_01, ID_01))
                 .isInstanceOf(StudentNotFoundException.class)
-                .hasMessage("Student id:1 not found.");
+                .hasMessage("Student id:%d not found.", ID_01);
     }
 
     @Test
     void getById__fails__on_user_not_found() {
 
         // GIVEN
-        givenUserDoesNotExists("user01");
+        givenUserDoesNotExists(USER_01);
 
         // THEN
-        assertThatThrownBy(() -> studentService.getById("user01", 1L))
+        assertThatThrownBy(() -> studentService.getById(USER_01, ID_01))
                 .isInstanceOf(UserNotFoundException.class)
-                .hasMessage("User 'user01' not found.");
+                .hasMessage("User '%s' not found.",USER_01);
     }
 
     @Test
     void getById__succeeds() {
 
-        final long studentID = 1L;
+        final long studentID = ID_01;
         final Student myStudent = Student.builder()
                 .id(studentID)
                 .firstName("Tom")
@@ -93,11 +96,11 @@ class StudentServiceImplTest {
                 .build();
 
         // GIVEN
-        givenUserExists("user01");
+        givenUserExists(USER_01);
         givenStudentIsFound(myStudent);
 
         // WHEN
-        final Student student = studentService.getById("user01", studentID);
+        final Student student = studentService.getById(USER_01, studentID);
 
         // THEN
         assertThat(student) // we expect the 'found' student
@@ -108,7 +111,7 @@ class StudentServiceImplTest {
     @Test
     void getById__succeeds__with_verification() {
 
-        final long studentID = 1L;
+        final long studentID = ID_01;
         final Student myStudent = Student.builder()
                 .id(studentID)
                 .firstName("Tom")
@@ -116,11 +119,11 @@ class StudentServiceImplTest {
                 .build();
 
         // GIVEN
-        givenUserExists("user01");
+        givenUserExists(USER_01);
         givenStudentIsFound(myStudent);
 
         // WHEN
-        final Student student = studentService.getById("user01", studentID);
+        final Student student = studentService.getById(USER_01, studentID);
 
         // THEN
         assertThat(student) // we expect the 'found' student
@@ -138,7 +141,7 @@ class StudentServiceImplTest {
         InOrder mocksInOrder = inOrder(userService, studentRepository);
 
         // check for the expected interactions to happen in the expected order
-        mocksInOrder.verify(userService, times(1)).userExists("user01");
+        mocksInOrder.verify(userService, times(1)).userExists(USER_01);
         mocksInOrder.verify(studentRepository, times(1)).getById(studentID);
         mocksInOrder.verifyNoMoreInteractions();
     }
