@@ -34,6 +34,21 @@ class StudentRestRepositoryTest implements WithAssertions {
     }
 
     @Test
+    void exception_on_not_authorized() {
+
+        // GIVEN
+        stubFor(get(urlEqualTo("/api/student/10"))
+                .willReturn(aResponse()
+                        .withStatus(HttpStatus.UNAUTHORIZED.value())
+                ));
+
+        // WHEN
+        assertThatThrownBy(() -> testObject.getById(10L))
+                .isInstanceOf(RestException.class)
+                .hasMessage("Unexpected HTTP %s code", HttpStatus.UNAUTHORIZED.value());
+    }
+
+    @Test
     void exception_on_not_found() {
 
         // GIVEN
@@ -48,21 +63,6 @@ class StudentRestRepositoryTest implements WithAssertions {
                 .hasMessage("Student id:%d not found.", 10L);
 
 
-    }
-
-    @Test
-    void exception_on_not_authorized() {
-
-        // GIVEN
-        stubFor(get(urlEqualTo("/api/student/10"))
-                .willReturn(aResponse()
-                        .withStatus(HttpStatus.UNAUTHORIZED.value())
-                ));
-
-        // WHEN
-        assertThatThrownBy(() -> testObject.getById(10L))
-                .isInstanceOf(RestException.class)
-                .hasMessage("Unexpected HTTP %s code", HttpStatus.UNAUTHORIZED.value());
     }
 
     @Test
