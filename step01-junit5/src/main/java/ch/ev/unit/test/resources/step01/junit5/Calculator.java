@@ -1,15 +1,18 @@
 package ch.ev.unit.test.resources.step01.junit5;
 
 /**
- * Base calculator class for the testing example.
+ * <p>Calculator class.</p>
+ * <p>Base calculator class for the testing example.</p>
+ *
+ * @author enrico
  */
 public class Calculator {
 
     /**
      * Adds the two operands, and returns the addition result.
      *
-     * @param a  - operand 'a'
-     * @param b- operand 'b'
+     * @param a operand 'a'
+     * @param b operand 'b'
      * @return the addition result.
      * @throws IllegalArgumentException if any of the operands is null.
      */

@@ -9,6 +9,11 @@ import ch.ev.unit.test.resources.step02.osgi.services.UserService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+/**
+ * <p>StudentServiceImpl class.</p>
+ *
+ * @author enrico
+ */
 @Component
 public class StudentServiceImpl implements StudentService {
 
@@ -18,14 +23,17 @@ public class StudentServiceImpl implements StudentService {
     @Reference
     private StudentRepository studentRepository;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Student getById(final String userName, final Long id) {
+    public Student getById(final String userName, final Long studentId) {
 
         failOnNull(userName, "'userName' cannot be null!");
-        failOnNull(id, "'id' cannot be null!");
+        failOnNull(studentId, "'id' cannot be null!");
         failOnNonExistingUser(userName);
 
-        return studentRepository.getById(id).orElseThrow(() -> new StudentNotFoundException(id));
+        return studentRepository.getById(studentId).orElseThrow(() -> new StudentNotFoundException(studentId));
     }
 
     private void failOnNonExistingUser(final String userName) {

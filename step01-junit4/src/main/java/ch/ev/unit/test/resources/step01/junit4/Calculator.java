@@ -1,17 +1,20 @@
 package ch.ev.unit.test.resources.step01.junit4;
 
 /**
- * Base calculator class for the testing example.
+ * <p>Calculator class.</p>
+ * <p>Base calculator class for the testing example.</p>
+ *
+ * @author enrico
  */
 public class Calculator {
 
     /**
      * Adds the two operands, and returns the addition result.
      *
-     * @param a  - operand 'a'
-     * @param b- operand 'b'
+     * @param a operand 'a'
+     * @param b operand 'b'
      * @return the addition result.
-     * @throws IllegalArgumentException if any of the operands is null.
+     * @throws java.lang.IllegalArgumentException if any of the operands is null.
      */
     public Integer add(final Integer a, final Integer b) {
         failOnNull(a, "'a' cannot be null!");

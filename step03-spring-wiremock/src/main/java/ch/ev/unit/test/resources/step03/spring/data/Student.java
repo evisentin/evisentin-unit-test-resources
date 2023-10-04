@@ -5,6 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * A basic representation of a student's information.
+ *
+ * @author enrico
+ */
 @Data
 @Builder
 @AllArgsConstructor
