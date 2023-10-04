@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * <p>Student class.</p>
+ * A basic representation of a student's information.
  *
  * @author enrico
  */

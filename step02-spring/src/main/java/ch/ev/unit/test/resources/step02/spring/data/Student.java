@@ -3,6 +3,11 @@ package ch.ev.unit.test.resources.step02.spring.data;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * A basic representation of a student's information.
+ *
+ * @author enrico
+ */
 @Data
 @Builder
 public class Student {
