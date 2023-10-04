@@ -1,5 +1,7 @@
 package ch.ev.unit.test.resources.step01.junit5;
 
+import java.util.Objects;
+
 /**
  * <p>Calculator class.</p>
  * <p>Base calculator class for the testing example.</p>
@@ -24,6 +26,6 @@ public class Calculator {
     }
 
     private void failOnNull(final Object object, final String message) {
-        if (object == null) throw new IllegalArgumentException(message);
+        Objects.requireNonNull(object, message);
     }
 }

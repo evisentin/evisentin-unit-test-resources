@@ -1,11 +1,11 @@
 package ch.ev.unit.test.resources.step01.junit4;
 
-import org.assertj.core.api.Assertions;
+import org.assertj.core.api.WithAssertions;
 import org.junit.Before;
 import org.junit.Test;
 
 // in JUNIT 4 test classes MUST be public
-public class CalculatorTest {
+public class CalculatorTest implements WithAssertions {
 
     Calculator testObject;
 
@@ -15,8 +15,8 @@ public class CalculatorTest {
 
         // here we are checking for a failure, we are expecting a specific exception with a specific message.
 
-        Assertions.assertThatThrownBy(() -> testObject.add(null, null)) // this is the call we expect to throw an exception
-                .isInstanceOf(IllegalArgumentException.class) // we expect it to be an IllegalArgumentException
+        assertThatThrownBy(() -> testObject.add(null, null)) // this is the call we expect to throw an exception
+                .isInstanceOf(NullPointerException.class) // we expect it to be an NullPointerException
                 .hasMessage("'a' cannot be null!"); // and we expect it to have a specific message
     }
 
@@ -32,8 +32,8 @@ public class CalculatorTest {
 
         // here we are checking for a failure, we are expecting a specific exception with a specific message.
 
-        Assertions.assertThatThrownBy(() -> testObject.add(10, null)) // this is the call we expect to throw an exception
-                .isInstanceOf(IllegalArgumentException.class) // we expect it to be an IllegalArgumentException
+        assertThatThrownBy(() -> testObject.add(10, null)) // this is the call we expect to throw an exception
+                .isInstanceOf(NullPointerException.class) // we expect it to be an NullPointerException
                 .hasMessage("'b' cannot be null!"); // and we expect it to have a specific message
     }
 
@@ -43,9 +43,9 @@ public class CalculatorTest {
 
         final Integer result = testObject.add(10, 20);
 
-        Assertions.assertThat(result) // here we are testng the result
-                .isNotNull() // we expect it not to be NULL
-                .isEqualTo(30); // AND we expect it to be a specific value
+        assertThat(result)
+                .as("result is not null").isNotNull()
+                .as("result has the correct value").isEqualTo(30);
 
     }
 

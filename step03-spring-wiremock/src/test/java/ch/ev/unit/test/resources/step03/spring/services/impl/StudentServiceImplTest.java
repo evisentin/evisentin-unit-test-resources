@@ -6,6 +6,8 @@ import ch.ev.unit.test.resources.step03.spring.exceptions.UserNotFoundException;
 import ch.ev.unit.test.resources.step03.spring.repositories.StudentRepository;
 import ch.ev.unit.test.resources.step03.spring.services.UserService;
 import lombok.NonNull;
+import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
@@ -13,14 +15,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @ExtendWith(MockitoExtension.class)
-class StudentServiceImplTest {
+class StudentServiceImplTest implements WithAssertions {
 
     // This annotation makes Mockito automatically create a 'mock' object for this type.
     @Mock
@@ -42,20 +42,23 @@ class StudentServiceImplTest {
     // -------------------------------------------------------------------------------------------------------------
 
     @Test
+    @DisplayName("getById fails when the studentId is null")
     void getById__fails__on_null_id() {
         assertThatThrownBy(() -> studentService.getById("user01", null))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(NullPointerException.class)
                 .hasMessage("'id' cannot be null!");
     }
 
     @Test
+    @DisplayName("getById fails when the userName is null")
     void getById__fails__on_null_userName() {
         assertThatThrownBy(() -> studentService.getById(null, null))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(NullPointerException.class)
                 .hasMessage("'userName' cannot be null!");
     }
 
     @Test
+    @DisplayName("getById fails when the student is not found")
     void getById__fails__on_student_not_found() {
 
         // GIVEN
@@ -69,6 +72,7 @@ class StudentServiceImplTest {
     }
 
     @Test
+    @DisplayName("getById fails when the user is not found")
     void getById__fails__on_user_not_found() {
 
         // GIVEN
@@ -81,6 +85,7 @@ class StudentServiceImplTest {
     }
 
     @Test
+    @DisplayName("getById succeeds")
     void getById__succeeds() {
 
         final long studentID = 1L;
@@ -99,11 +104,12 @@ class StudentServiceImplTest {
 
         // THEN
         assertThat(student) // we expect the 'found' student
-                .isNotNull() // not to be null
-                .isEqualTo(myStudent); // to be equal to myStudent
+                .as("Student is not null").isNotNull() // not to be null
+                .as("Student is equal to the expected one").isEqualTo(myStudent); // to be equal to myStudent
     }
 
     @Test
+    @DisplayName("getById succeeds (with mockito's checks on mocks)")
     void getById__succeeds__with_verification() {
 
         final long studentID = 1L;
@@ -122,8 +128,8 @@ class StudentServiceImplTest {
 
         // THEN
         assertThat(student) // we expect the 'found' student
-                .isNotNull() // not to be null
-                .isEqualTo(myStudent); // to be equal to myStudent
+                .as("Student is not null").isNotNull() // not to be null
+                .as("Student is equal to the expected one").isEqualTo(myStudent); // to be equal to myStudent
 
         // --------------------------------------------------------------------------------------------
         // Here we use the Mockito's 'InOrder' class, which takes care of the order of method calls

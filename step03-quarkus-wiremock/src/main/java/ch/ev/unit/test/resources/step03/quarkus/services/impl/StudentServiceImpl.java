@@ -8,6 +8,8 @@ import ch.ev.unit.test.resources.step03.quarkus.services.UserService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.Objects;
+
 @ApplicationScoped
 public class StudentServiceImpl implements StudentService {
 
@@ -32,6 +34,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     private void failOnNull(final Object object, final String message) {
-        if (object == null) throw new IllegalArgumentException(message);
+        Objects.requireNonNull(object, message);
     }
 }
