@@ -9,6 +9,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import lombok.SneakyThrows;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,7 @@ class StudentRestRepositoryTest implements WithAssertions {
     }
 
     @Test
+    @DisplayName("getById fails when we receive a HTTP 401 UNAUTHORIZED response")
     void exception_on_not_authorized() {
 
         // GIVEN
@@ -49,6 +51,7 @@ class StudentRestRepositoryTest implements WithAssertions {
     }
 
     @Test
+    @DisplayName("getById fails when we receive a HTTP 404 NOT_FOUND response")
     void exception_on_not_found() {
 
         // GIVEN
@@ -66,6 +69,7 @@ class StudentRestRepositoryTest implements WithAssertions {
     }
 
     @Test
+    @DisplayName("getById fails when the id is null")
     void exception_on_null_id() {
 
         // WHEN
@@ -76,6 +80,7 @@ class StudentRestRepositoryTest implements WithAssertions {
 
     @Test
     @SneakyThrows
+    @DisplayName("getById fails when we receive an empty json body")
     void fails_on_empty_body() {
 
         // GIVEN
@@ -93,6 +98,7 @@ class StudentRestRepositoryTest implements WithAssertions {
 
     @Test
     @SneakyThrows
+    @DisplayName("getById succeeds")
     void success_on_student_found() {
 
         // GIVEN
