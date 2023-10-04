@@ -9,6 +9,8 @@ import ch.ev.unit.test.resources.step02.osgi.services.UserService;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import java.util.Objects;
+
 /**
  * <p>StudentServiceImpl class.</p>
  *
@@ -30,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
     public Student getById(final String userName, final Long studentId) {
 
         failOnNull(userName, "'userName' cannot be null!");
-        failOnNull(studentId, "'id' cannot be null!");
+        failOnNull(studentId, "'studentId' cannot be null!");
         failOnNonExistingUser(userName);
 
         return studentRepository.getById(studentId).orElseThrow(() -> new StudentNotFoundException(studentId));
@@ -41,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     private void failOnNull(final Object object, final String message) {
-        if (object == null) throw new IllegalArgumentException(message);
+        Objects.requireNonNull(object, message);
     }
 
 }

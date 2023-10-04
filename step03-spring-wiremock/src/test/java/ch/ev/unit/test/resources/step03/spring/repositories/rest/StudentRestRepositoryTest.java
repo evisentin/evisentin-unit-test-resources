@@ -108,6 +108,4 @@ class StudentRestRepositoryTest implements WithAssertions {
         // THEN
         assertThat(student).isEqualTo(expectedStudent);
     }
-
-
 }

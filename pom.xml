@@ -61,7 +61,6 @@
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <argLine>--illegal-access=permit</argLine>
-                        <testFailureIgnore>true</testFailureIgnore>
                         <forkCount>2</forkCount>
                         <reuseForks>true</reuseForks>
                         <argLine>${surefireArgLine}</argLine>
