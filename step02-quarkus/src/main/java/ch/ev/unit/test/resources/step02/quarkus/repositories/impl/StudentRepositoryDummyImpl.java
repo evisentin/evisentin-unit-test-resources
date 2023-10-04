@@ -9,7 +9,7 @@ import java.util.Optional;
 @ApplicationScoped
 public class StudentRepositoryDummyImpl implements StudentRepository {
     @Override
-    public Optional<Student> getById(Long id) {
+    public Optional<Student> getById(Long studentId) {
         return Optional.empty();
     }
 }
