@@ -97,3 +97,21 @@ Open a terminal and run
 ```shell
 brew install maven
 ```
+
+## Build the project
+
+You can build the project by running the following command in a terminal, from the project's root folder:
+
+```shell
+mvn clean install
+```
+
+(if you want to build the Javadoc as well)
+
+```shell
+mvn clean install -Pjavadoc
+```
+
+### Test coverage report
+
+After the build is completed, in each module's `target/site/jacoco` folder you can find the test coverage report.
