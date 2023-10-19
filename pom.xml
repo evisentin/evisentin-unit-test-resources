@@ -8,6 +8,7 @@
     <artifactId>evisentin-unit-test-resources</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>UNIT TEST RESOURCES</name>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <modules>
         <module>step01-junit4</module>
