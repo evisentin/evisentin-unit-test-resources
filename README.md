@@ -6,7 +6,7 @@ This project was created to contain resources to support my notes on unit tests 
 
 **PLEASE NOTE:**
 
-- No proprietary source code has been used in this repository.
+- **No proprietary source code has been used in this repository**.
 - The test object classes are abstract in their purpose, purely for illustrative purposes, and in no way connected to
   any production code.
 - The test libraries used - as well as the frameworks used as examples - are public domain.
@@ -81,6 +81,8 @@ Open a terminal and run
 curl -s "https://get.sdkman.io" | bash
 ```
 
+I also suggest you edit your ` ~/.sdkman/etc/config` file, and add/update the entry`sdkman_auto_env=true`
+
 ## Install and use Java 17
 
 Open a terminal and run
@@ -108,9 +110,13 @@ mvn clean install
 
 (if you want to build the Javadoc as well)
 
+### Build and generate JavdDoc
+
 ```shell
 mvn clean install -Pjavadoc
 ```
+
+After the build is completed, in each module's `target/site/apidocs` folder you can find the generated javadoc.
 
 ### Test coverage report
 

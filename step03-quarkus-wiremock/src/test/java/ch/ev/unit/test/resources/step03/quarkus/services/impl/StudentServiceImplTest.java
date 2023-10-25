@@ -68,7 +68,7 @@ class StudentServiceImplTest implements WithAssertions {
         // THEN
         assertThatThrownBy(() -> studentService.getById("user01", 1L))
                 .isInstanceOf(StudentNotFoundException.class)
-                .hasMessage("Student id %d not found.",1L);
+                .hasMessage("Student id %d not found.", 1L);
     }
 
     @Test

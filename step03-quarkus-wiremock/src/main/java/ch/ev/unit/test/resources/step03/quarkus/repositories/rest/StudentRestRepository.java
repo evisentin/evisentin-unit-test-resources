@@ -9,12 +9,18 @@ import jakarta.enterprise.context.ApplicationScoped;
 import lombok.NonNull;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+/**
+ * Rest implementation of {@link StudentRepository}
+ */
 @ApplicationScoped
 public class StudentRestRepository implements StudentRepository {
 
     @RestClient
     StudentRestClient studentRestClient;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Student getById(@NonNull final Long id) {
 

@@ -48,7 +48,7 @@ class StudentServiceImplTest implements WithAssertions {
     void getById__fails__on_null_id() {
         assertThatThrownBy(() -> studentService.getById("user01", null))
                 .isInstanceOf(NullPointerException.class)
-                .hasMessage("'id' cannot be null!");
+                .hasMessage("'studentId' cannot be null!");
     }
 
     @Test

@@ -15,6 +15,9 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.apache.commons.lang3.StringUtils.removeEnd;
 
+/**
+ * Rest implementation of {@link StudentRepository}
+ */
 @Slf4j
 @Repository
 public class StudentRestRepository implements StudentRepository {
@@ -23,6 +26,10 @@ public class StudentRestRepository implements StudentRepository {
 
     private final RestTemplate restTemplate;
 
+    /**
+     * @param serviceUrl          must not be null
+     * @param restTemplateBuilder must nut be null
+     */
     public StudentRestRepository(
             @Value("${app.services.external.student.base-url}") final @NonNull String serviceUrl,
             final RestTemplateBuilder restTemplateBuilder) {
@@ -31,6 +38,9 @@ public class StudentRestRepository implements StudentRepository {
         this.serviceUrl = removeEnd(serviceUrl, "/");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Student getById(final @NonNull Long id) {
 
