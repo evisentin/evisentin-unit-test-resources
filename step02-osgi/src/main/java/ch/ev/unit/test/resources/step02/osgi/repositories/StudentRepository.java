@@ -11,5 +11,11 @@ import java.util.Optional;
  */
 public interface StudentRepository {
 
+    /**
+     * Retrieves student by its studentId.
+     *
+     * @param studentId must not be null
+     * @return the student with the given studentId or Optional#empty() if none found.
+     */
     Optional<Student> getById(Long studentId);
 }

@@ -12,6 +12,10 @@ public class RestException extends RuntimeException {
 
     private final int statusCode;
 
+    /**
+     * @param statusCode must not be null
+     * @param message    must not be null
+     */
     public RestException(final int statusCode, final String message) {
         super(message);
         this.statusCode = statusCode;

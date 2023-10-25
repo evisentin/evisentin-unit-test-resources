@@ -8,11 +8,11 @@ package ch.ev.unit.test.resources.step02.spring.exceptions;
 public class StudentNotFoundException extends RuntimeException {
 
     /**
-     * Constructs a StudentNotFoundException with an automatic message built for the given id
+     * Constructs a StudentNotFoundException with an automatic message built for the given studentId.
      *
      * @param studentId the student ID
      */
     public StudentNotFoundException(final Long studentId) {
-        super(String.format("Student id:%d not found.", studentId));
+        super(String.format("Student id %d not found.", studentId));
     }
 }

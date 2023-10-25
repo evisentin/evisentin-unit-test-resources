@@ -19,6 +19,10 @@ public interface StudentRestClient {
     @Path("{id}")
     Student getById(Long id);
 
+    /**
+     * @param response must not be null
+     * @return the exception
+     */
     @ClientExceptionMapper
     static RuntimeException toException(final Response response) {
 

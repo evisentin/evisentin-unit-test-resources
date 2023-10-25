@@ -24,7 +24,7 @@ class CalculatorTest implements WithAssertions {
 
     // -------------------------------------------------------------------------------------------------------------
     // the naming convention used here is <method_name>__[fails|succeeds]__<condition>
-    // this is just a suggestion, there are many other named conventions that are just as valid and effective.
+    // this is just a suggestion, there are many other naming conventions that are just as valid and effective.
     // The important thing is to choose one and keep the choice consistent.
     // -------------------------------------------------------------------------------------------------------------
 

@@ -8,7 +8,7 @@ package ch.ev.unit.test.resources.step02.quarkus.exceptions;
 public class UserNotFoundException extends RuntimeException {
 
     /**
-     * Constructs a UserNotFoundException with an automatic message built for the given user name
+     * Constructs a UserNotFoundException with an automatic message built for the given userName.
      *
      * @param userName the student name
      */

@@ -37,7 +37,7 @@ class StudentServiceImplTest implements WithAssertions {
 
     // -------------------------------------------------------------------------------------------------------------
     // the naming convention used here is <method_name>__[fails|succeeds]__<condition>
-    // this is just a suggestion, there are many other named conventions that are just as valid and effective.
+    // this is just a suggestion, there are many other naming conventions that are just as valid and effective.
     // The important thing is to choose one and keep the choice consistent.
     // -------------------------------------------------------------------------------------------------------------
 
@@ -68,7 +68,7 @@ class StudentServiceImplTest implements WithAssertions {
         // THEN
         assertThatThrownBy(() -> studentService.getById("user01", 1L))
                 .isInstanceOf(StudentNotFoundException.class)
-                .hasMessage("Student id:1 not found.");
+                .hasMessage("Student id %d not found.", 1L);
     }
 
     @Test

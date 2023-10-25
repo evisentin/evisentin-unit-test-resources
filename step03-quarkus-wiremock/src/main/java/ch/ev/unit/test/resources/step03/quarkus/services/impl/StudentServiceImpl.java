@@ -10,6 +10,11 @@ import jakarta.inject.Inject;
 
 import java.util.Objects;
 
+/**
+ * <p>StudentService implementation.</p>
+ *
+ * @author enrico
+ */
 @ApplicationScoped
 public class StudentServiceImpl implements StudentService {
 
@@ -19,6 +24,9 @@ public class StudentServiceImpl implements StudentService {
     @Inject
     StudentRepository studentRepository;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Student getById(final String userName, final Long id) {
 
