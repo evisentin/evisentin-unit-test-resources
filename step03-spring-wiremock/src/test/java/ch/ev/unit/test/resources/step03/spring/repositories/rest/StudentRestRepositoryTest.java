@@ -63,7 +63,7 @@ class StudentRestRepositoryTest implements WithAssertions {
         // WHEN
         assertThatThrownBy(() -> testObject.getById(10L))
                 .isInstanceOf(StudentNotFoundException.class)
-                .hasMessage("Student id:%d not found.", 10L);
+                .hasMessage("Student id %d not found.", 10L);
 
 
     }

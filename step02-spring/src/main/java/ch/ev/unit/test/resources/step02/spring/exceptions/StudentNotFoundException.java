@@ -13,6 +13,6 @@ public class StudentNotFoundException extends RuntimeException {
      * @param studentId the student ID
      */
     public StudentNotFoundException(final Long studentId) {
-        super(String.format("Student id:%d not found.", studentId));
+        super(String.format("Student id %d not found.", studentId));
     }
 }
