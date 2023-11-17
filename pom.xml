@@ -21,7 +21,7 @@
     </modules>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <properties>
-        <!-- [LIBRARIES' VERSIONS] -->
+        <!-- [LIBRARY VERSIONS] -->
         <assertj-core.version>3.24.2</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
         <junit-5.version>5.10.1</junit-5.version>
@@ -29,12 +29,12 @@
         <mockito.version>5.7.0</mockito.version>
         <wiremock.version>3.3.1</wiremock.version>
 
-        <!-- [FRAMEWORKS' VERSIONS] -->
+        <!-- [FRAMEWORK VERSIONS] -->
         <osgi.version>7.0.0</osgi.version>
         <quarkus.version>3.5.2</quarkus.version>
         <spring-boot.version>3.1.5</spring-boot.version>
 
-        <!-- [MAVEN PLUGINS' VERSIONS] -->
+        <!-- [MAVEN PLUGIN VERSIONS] -->
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
         <maven-failsafe-plugin.version>3.2.1</maven-failsafe-plugin.version>
