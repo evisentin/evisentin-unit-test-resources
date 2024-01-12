@@ -22,7 +22,7 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <properties>
         <!-- [LIBRARY VERSIONS] -->
-        <assertj-core.version>3.24.2</assertj-core.version>
+        <assertj-core.version>3.25.1</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
         <junit-5.version>5.10.1</junit-5.version>
         <lombok.version>1.18.30</lombok.version>
@@ -140,9 +140,6 @@
                                 <requireJavaVersion>
                                     <version>17</version>
                                 </requireJavaVersion>
-                                <!--                <requireOS>-->
-                                <!--                  <family>unix</family>-->
-                                <!--                </requireOS>-->
                             </rules>
                         </configuration>
                     </execution>
