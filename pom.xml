@@ -27,11 +27,11 @@
         <junit-5.version>5.10.2</junit-5.version>
         <lombok.version>1.18.32</lombok.version>
         <mockito.version>5.11.0</mockito.version>
-        <wiremock.version>3.4.2</wiremock.version>
+        <wiremock.version>3.5.1</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
         <osgi.version>7.0.0</osgi.version>
-        <quarkus.version>3.8.3</quarkus.version>
+        <quarkus.version>3.9.1</quarkus.version>
         <spring-boot.version>3.2.4</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
