@@ -31,11 +31,11 @@
 
         <!-- [FRAMEWORK VERSIONS] -->
         <osgi.version>7.0.0</osgi.version>
-        <quarkus.version>3.9.2</quarkus.version>
+        <quarkus.version>3.9.3</quarkus.version>
         <spring-boot.version>3.2.4</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
-        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
