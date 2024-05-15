@@ -26,7 +26,7 @@
         <junit-4.version>4.13.2</junit-4.version>
         <junit-5.version>5.10.2</junit-5.version>
         <lombok.version>1.18.32</lombok.version>
-        <mockito.version>5.11.0</mockito.version>
+        <mockito.version>5.12.0</mockito.version>
         <wiremock.version>3.5.4</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
