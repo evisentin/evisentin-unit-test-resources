@@ -25,9 +25,9 @@
         <assertj-core.version>3.26.0</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
         <junit-5.version>5.10.2</junit-5.version>
-        <lombok.version>1.18.32</lombok.version>
+        <lombok.version>1.18.34</lombok.version>
         <mockito.version>5.12.0</mockito.version>
-        <wiremock.version>3.7.0</wiremock.version>
+        <wiremock.version>3.8.0</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
         <osgi.version>7.0.0</osgi.version>
@@ -37,11 +37,11 @@
         <!-- [MAVEN PLUGIN VERSIONS] -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <maven-deploy-plugin.version>3.1.2</maven-deploy-plugin.version>
-        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
-        <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>3.3.0</maven-failsafe-plugin.version>
         <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
-        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
-        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
+        <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
     </properties>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <build>
