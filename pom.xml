@@ -31,7 +31,7 @@
 
         <!-- [FRAMEWORK VERSIONS] -->
         <osgi.version>7.0.0</osgi.version>
-        <quarkus.version>3.12.3</quarkus.version>
+        <quarkus.version>3.13.0</quarkus.version>
         <spring-boot.version>3.3.2</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
