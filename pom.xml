@@ -22,16 +22,16 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <properties>
         <!-- [LIBRARY VERSIONS] -->
-        <assertj-core.version>3.27.0</assertj-core.version>
+        <assertj-core.version>3.27.2</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
-        <junit-5.version>5.11.3</junit-5.version>
+        <junit-5.version>5.11.4</junit-5.version>
         <lombok.version>1.18.36</lombok.version>
-        <mockito.version>5.14.2</mockito.version>
+        <mockito.version>5.15.2</mockito.version>
         <wiremock.version>3.10.0</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
         <osgi.version>7.0.0</osgi.version>
-        <quarkus.version>3.17.4</quarkus.version>
+        <quarkus.version>3.17.5</quarkus.version>
         <spring-boot.version>3.4.1</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
