@@ -25,12 +25,12 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.core</artifactId>
-            <version>${osgi.version}</version>
+            <version>${osgi.core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
-            <artifactId>osgi.cmpn</artifactId>
-            <version>${osgi.version}</version>
+            <artifactId>org.osgi.service.component.annotations</artifactId>
+            <version>${org.osgi.service.component.annotations.version}</version>
         </dependency>
 
         <!-- [LOMBOK] -->

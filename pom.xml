@@ -30,7 +30,13 @@
         <wiremock.version>3.10.0</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
-        <osgi.version>7.0.0</osgi.version>
+
+        <!-- OSGI dependencies, according to OSGI 8.0.0 specification -->
+        <!-- PLEASE see https://docs.osgi.org/specification/osgi.cmpn/8.0.0/introduction.html section '1.2.2 Component Versions'-->
+        <osgi.core.version>8.0.0</osgi.core.version>
+        <org.osgi.service.component.annotations.version>1.5.1</org.osgi.service.component.annotations.version>
+        <!-- END OF OSGI -->
+
         <quarkus.version>3.17.5</quarkus.version>
         <spring-boot.version>3.4.1</spring-boot.version>
 
