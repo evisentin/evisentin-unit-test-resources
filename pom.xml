@@ -37,7 +37,7 @@
         <org.osgi.service.component.annotations.version>1.5.1</org.osgi.service.component.annotations.version>
         <!-- END OF OSGI -->
 
-        <quarkus.version>3.21.2</quarkus.version>
+        <quarkus.version>3.21.3</quarkus.version>
         <spring-boot.version>3.4.4</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
