@@ -24,10 +24,10 @@
         <!-- [LIBRARY VERSIONS] -->
         <assertj-core.version>3.27.3</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
-        <junit-5.version>5.12.0</junit-5.version>
-        <lombok.version>1.18.36</lombok.version>
-        <mockito.version>5.16.0</mockito.version>
-        <wiremock.version>3.12.1</wiremock.version>
+        <junit-5.version>5.12.2</junit-5.version>
+        <lombok.version>1.18.38</lombok.version>
+        <mockito.version>5.17.0</mockito.version>
+        <wiremock.version>3.13.0</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
 
@@ -37,8 +37,8 @@
         <org.osgi.service.component.annotations.version>1.5.1</org.osgi.service.component.annotations.version>
         <!-- END OF OSGI -->
 
-        <quarkus.version>3.21.3</quarkus.version>
-        <spring-boot.version>3.4.4</spring-boot.version>
+        <quarkus.version>3.21.4</quarkus.version>
+        <spring-boot.version>3.4.5</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
