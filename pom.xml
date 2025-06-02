@@ -24,9 +24,9 @@
         <!-- [LIBRARY VERSIONS] -->
         <assertj-core.version>3.27.3</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
-        <junit-5.version>5.12.2</junit-5.version>
+        <junit-5.version>5.13.0</junit-5.version>
         <lombok.version>1.18.38</lombok.version>
-        <mockito.version>5.17.0</mockito.version>
+        <mockito.version>5.18.0</mockito.version>
         <wiremock.version>3.13.0</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
