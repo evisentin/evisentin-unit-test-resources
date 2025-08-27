@@ -38,7 +38,7 @@
         <!-- END OF OSGI -->
 
         <quarkus.version>3.25.4</quarkus.version>
-        <spring-boot.version>3.5.4</spring-boot.version>
+        <spring-boot.version>3.5.5</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
