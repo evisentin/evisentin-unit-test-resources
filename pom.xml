@@ -22,11 +22,11 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <properties>
         <!-- [LIBRARY VERSIONS] -->
-        <assertj-core.version>3.27.3</assertj-core.version>
+        <assertj-core.version>3.27.6</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
-        <junit-5.version>5.13.3</junit-5.version>
-        <lombok.version>1.18.38</lombok.version>
-        <mockito.version>5.18.0</mockito.version>
+        <junit-5.version>5.14.0</junit-5.version>
+        <lombok.version>1.18.42</lombok.version>
+        <mockito.version>5.20.0</mockito.version>
         <wiremock.version>3.13.1</wiremock.version>
 
         <!-- [FRAMEWORK VERSIONS] -->
@@ -37,11 +37,11 @@
         <org.osgi.service.component.annotations.version>1.5.1</org.osgi.service.component.annotations.version>
         <!-- END OF OSGI -->
 
-        <quarkus.version>3.26.4</quarkus.version>
-        <spring-boot.version>3.5.6</spring-boot.version>
+        <quarkus.version>3.28.5</quarkus.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
-        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
         <maven-deploy-plugin.version>3.1.3</maven-deploy-plugin.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
