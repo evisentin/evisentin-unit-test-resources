@@ -29,7 +29,7 @@
         <mockito.version>5.20.0</mockito.version>
         <wiremock.version>3.13.2</wiremock.version>
 
-        <!-- [FRAMEWORK VERSIONS] -->
+        <!-- [FRAMEWORK VERSIONS]    -->
 
         <!-- OSGI dependencies, according to OSGI 8.0.0 specification -->
         <!-- PLEASE see https://docs.osgi.org/specification/osgi.cmpn/8.0.0/introduction.html section '1.2.2 Component Versions'-->
