@@ -24,12 +24,12 @@
         <!-- [LIBRARY VERSIONS] -->
         <assertj-core.version>3.27.6</assertj-core.version>
         <junit-4.version>4.13.2</junit-4.version>
-        <junit-5.version>5.14.0</junit-5.version>
+        <junit-5.version>5.14.1</junit-5.version>
         <lombok.version>1.18.42</lombok.version>
         <mockito.version>5.20.0</mockito.version>
-        <wiremock.version>3.13.1</wiremock.version>
+        <wiremock.version>3.13.2</wiremock.version>
 
-        <!-- [FRAMEWORK VERSIONS] -->
+        <!-- [FRAMEWORK VERSIONS]    -->
 
         <!-- OSGI dependencies, according to OSGI 8.0.0 specification -->
         <!-- PLEASE see https://docs.osgi.org/specification/osgi.cmpn/8.0.0/introduction.html section '1.2.2 Component Versions'-->
@@ -37,7 +37,7 @@
         <org.osgi.service.component.annotations.version>1.5.1</org.osgi.service.component.annotations.version>
         <!-- END OF OSGI -->
 
-        <quarkus.version>3.29.4</quarkus.version>
+        <quarkus.version>3.30.3</quarkus.version>
         <spring-boot.version>4.0.0</spring-boot.version>
 
         <!-- [MAVEN PLUGIN VERSIONS] -->
