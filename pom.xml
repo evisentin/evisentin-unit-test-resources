@@ -142,7 +142,7 @@
                                     </message>
                                 </bannedPlugins>
                                 <requireMavenVersion>
-                                    <version>3.9.8</version>
+                                    <version>3.9.12</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>17</version>
