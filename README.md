@@ -60,7 +60,7 @@ You will see modules `step03-<xxx>`, please refer to each module's `README.md` f
 
 # Local setup
 
-You need Java 17 and Apache Maven to build this project.
+You need Java 21 and Apache Maven to build this project.
 
 Feel free to install them as you like best, a suggestion is to use [Homebrew](https://brew.sh/)
 and [SDKMAN](https://sdkman.io/)
@@ -83,13 +83,13 @@ curl -s "https://get.sdkman.io" | bash
 
 I also suggest you edit your ` ~/.sdkman/etc/config` file, and add/update the entry`sdkman_auto_env=true`
 
-## Install and use Java 17
+## Install and use Java 21
 
 Open a terminal and run
 
 ```shell
-sdk install java 17.0.7-tem
-sdk default java 17.0.7-tem
+sdk install java 21.0.6-tem
+sdk default java 21.0.6-tem
 ```
 
 ## Install Apache Maven
